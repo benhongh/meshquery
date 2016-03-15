@@ -2,6 +2,7 @@
 #define INCLUDED_QUERY_HPP
 
 #include <boost/optional.hpp>
+#include <eigen3/Eigen/Dense>
 #include "mesh.hpp"
 
 namespace hongbin {
@@ -13,13 +14,7 @@ namespace hongbin {
         ClosestPointQuery() = delete;
         ClosestPointQuery(const Mesh& mesh);   //! constructor a ClosestPointQuery based on a mesh
         
-        //! invoke the ClosestPointQuery providing a reference point and a max distance
-        /*!
-            \param queryPoint the reference point
-            \param maxDistance maximum search distance. Any vertex further than the max distance given from the reference point
-                               is not considered in the query.
-        */
-        Mesh::const_iterator operator ()(const Vec3& queryPoint, double maxDistance);
+        boost::optional<Eigen::Vector3d> operator()(const Eigen::Vector3d referencePoint, double maxDistance);
         
     private:
         const Mesh& m_mesh;

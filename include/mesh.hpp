@@ -3,7 +3,10 @@
 
 #include <vector>
 #include <istream>
-#include "vec3.hpp"
+#include <tuple>
+#include <functional>
+#include <boost/optional.hpp>
+#include <eigen3/Eigen/Dense>
 
 namespace hongbin {
     
@@ -13,24 +16,20 @@ namespace hongbin {
     struct Mesh {
         Mesh();
         
-        typedef std::vector<Vec3>::const_iterator const_iterator; ///< const iterator type for vertices
-        const_iterator pointsBegin() const;                       ///< const iterator at the first vertex
-        const_iterator pointsEnd() const;                         ///< const iterator at one past the last vertex
+        int addVertex(const Eigen::Vector3d& vertex);
+        int addVertex(double x, double y, double z);
+        int addFace(int v1_index, int v2_index, int v3_index);
         
-        typedef std::vector<Vec3>::iterator iterator;             ///< iterator type for vertices
-        iterator pointsBegin();                                   ///< iterator at the frst vertex
-        iterator pointsEnd();                                     ///< iterator at one past the last vertex
+        const Eigen::Vector3d& getVertex(int vertexId) const;
+        std::tuple<int, int, int> getFaceVertices(int faceId) const;
         
-        //! Add a point (i.e. vertex) to the current mesh
-        /*!
-         \param point the vertex point to add to the mesh
-        */
-        void addPoint(const Vec3& point);
+        int iterateVertices(std::function<void(const Eigen::Vector3d&, int)> vertexProc) const;
+        int iterateFaces(int sharedVertex, std::function<void(const std::tuple<int, int, int>&, int)> faceProc) const;
         
     private:
-        std::vector<Vec3> m_points;
+        std::vector<Eigen::Vector3d> m_vertices;
+        std::vector<std::tuple<int, int, int>> m_faces;
     };
-    
 }
 
 #endif // include guard
