@@ -145,3 +145,8 @@ constraint. But for discussion's sake let's just say that some
 degree of parallelism can potentially be used improve the query
 performance if (and it is a big if) the mesh is incredibly 
 complex.
+
+#API reference
+A doxygen configuration file (Doxyfile) is provided to generate
+API references. Execute doxygen at the project root directory 
+to generate HTML reference documents.

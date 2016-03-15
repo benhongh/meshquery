@@ -14,6 +14,10 @@ namespace hongbin {
         ClosestPointQuery() = delete;
         ClosestPointQuery(const Mesh& mesh);   //! constructor a ClosestPointQuery based on a mesh
         
+        /**
+          * invoke the query with a reference point and a max distance limit. 
+          * returns boost::none if the closest point is not found within the max distance,
+          */
         boost::optional<Eigen::Vector3d> operator()(const Eigen::Vector3d referencePoint, double maxDistance);
         
     private:
