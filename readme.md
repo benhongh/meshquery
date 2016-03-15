@@ -150,3 +150,49 @@ complex.
 A doxygen configuration file (Doxyfile) is provided to generate
 API references. Execute doxygen at the project root directory 
 to generate HTML reference documents.
+
+#Input format
+The demo reads from standard input, and writes result to standard
+output. Inputs are read on a line-to-line basis. Each input line
+can be one of the following:
+
+* Vertex definition starts with **V**, followed by the x, y, and
+  z coordinates delimited by space
+* Face definition starts with **F**, followed by the vertex 
+  indices v1, v2, and v3, delimited by space
+* Query definition starts with **Q**, followed by the reference
+  coordinate and max distance x, y, z, and md, delimited by
+  space
+  
+Upon receiving a query definition the demo immediately evalates
+the closest point on the mesh defined up to that point. Further
+definition of the mesh can follow.
+
+Here is an example to create a cube:
+
+    V -1 -1  1
+    V -1 -1 -1
+    V  1 -1 -1
+    V  1 -1  1
+    V -1  1  1
+    V -1  1 -1
+    V  1  1 -1
+    V  1  1  1
+    F 0 1 2
+    F 0 2 3
+    F 3 2 6
+    F 3 6 7
+    F 7 6 5
+    F 7 5 4
+    F 4 5 1
+    F 4 1 0
+    F 0 3 7
+    F 0 7 4
+    F 5 1 6
+    F 5 1 2
+    Q 1 1 1 5 # expect (1,1,1)
+    
+#Test cases
+A number of hand-crafted test cases are in the tests/ folder. To use
+a test case, redirect standard input to read from the test case files
+in the terminal.

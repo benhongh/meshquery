@@ -92,7 +92,6 @@ namespace hongbin {
         }
         
         auto closestVertex = m_mesh.getVertex(closestVertexIndex.value());
-        std::cout << "closest vertex " << closestVertex[0] << ", " << closestVertex[1] << ", " << closestVertex[2] << std::endl;
         
         boost::optional<Vector3d> closestPoint = boost::none;
         double minSquaredDistance = maxDistance * maxDistance;
