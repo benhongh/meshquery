@@ -5,7 +5,9 @@
 
 namespace hongbin {
 
-    
+    /**
+     * A simple 3D vector
+     */
     struct Vec3 {
         Vec3() = delete;
         Vec3(double x, double y, double z);
@@ -13,9 +15,9 @@ namespace hongbin {
         
         Vec3& operator=(const Vec3& v) = delete;
         
-        double x() const;
-        double y() const;
-        double z() const;
+        double x() const;  //! get the x component of the vector
+        double y() const;  //! get the y component of the vector
+        double z() const;  //! get the z component of the vector
         
     private:
         const double m_x;
