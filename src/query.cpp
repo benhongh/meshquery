@@ -31,6 +31,9 @@ namespace hongbin {
         return v / v.norm();
     }
     
+    /**
+      * Try to find a projection point on the edge. If not found, boost::none is returned instead
+      */
     boost::optional<Vector3d> getEdgeProjection(const Vector3d& referencePoint, const Vector3d& v1, const Vector3d& v2) {
         auto edgeUnit = unit(v2 - v1);
         auto projection = (referencePoint - v1).dot(edgeUnit);  // projection of RP along v1->v2
@@ -44,6 +47,9 @@ namespace hongbin {
         }
     }
     
+    /**
+      * Find the closest point within the confine of a triangle. It can be inside the triangle, on one edge, or on one vertex
+      */
     boost::optional<Vector3d> findClosestPointInFace(
         const Vector3d& referencePoint,
         const Vector3d& closestVertex,
@@ -95,6 +101,7 @@ namespace hongbin {
         
         boost::optional<Vector3d> closestPoint = boost::none;
         double minSquaredDistance = maxDistance * maxDistance;
+        
         m_mesh.iterateFaces(closestVertexIndex.value(), [&](std::tuple<int, int, int> face, int faceIndex){
             auto v1 = m_mesh.getVertex(std::get<0>(face));
             auto v2 = m_mesh.getVertex(std::get<1>(face));
