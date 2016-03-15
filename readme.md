@@ -20,6 +20,10 @@ to be inside the mesh, this demo shall locate the closest point on
 the **internal** surface of the manifold. Collision detection is
 way too complicated for a 3-hour exercise.
 
+The mesh can be disjoint, in which case the closest point from one
+of the constituents shall be quried. This demo makes no effort
+to validate mesh.
+
 ##Solution
 
 ##Closest vertex
