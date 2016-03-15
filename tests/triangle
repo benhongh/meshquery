@@ -9,4 +9,7 @@ Q 2 2 1 5
 Q -2 -2 1 5
 !expect (0,0,0)
 
+Q -2 -2 1 1
+!expect none
+
 END
