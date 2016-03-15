@@ -109,6 +109,10 @@ library was chosen because:
 * It came top on my Google search
 * It also implements SIMD
 
+Note that I haven't had time to check if my clang compiler 
+actually generates SIMD instructions. Given the very simple
+build step I suspect it doesn't.
+
 #Threading
 This is a single-threaded demo given the highly limited time
 constraint. But for discussion's sake let's just say that some
