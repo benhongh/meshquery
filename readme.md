@@ -24,6 +24,14 @@ The mesh can be disjoint, in which case the closest point from one
 of the constituents shall be quried. This demo makes no effort
 to validate mesh.
 
+Edge length in general is assumed to be much smaller than the max
+distance provided. This is to rule out the edge case where the
+closest point lies on a face whose vertices are beyond the max 
+distance from the reference point. By ruling out this edge case
+on practical grounds allows pre-filtering of number of vertices
+to compute, thus improves performance when the mesh has large
+number of facets.
+
 ##Solution
 
 ##Closest vertex
