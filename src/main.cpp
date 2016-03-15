@@ -11,10 +11,12 @@ int main(int argc, char* argv[]){
     mesh.addVertex(-1, -1, 0);
     mesh.addVertex(1, -1, 0);
     mesh.addVertex(0, 1, 0);
+    mesh.addVertex(1, 1, 0);
     mesh.addFace(0, 1, 2);
+    mesh.addFace(1, 3, 2);
     
     ClosestPointQuery query{mesh};
-    auto result = query(Eigen::Vector3d{1, 0, 1}, 2);
+    auto result = query(Eigen::Vector3d{1, 0.25, 1}, 2);
     if (result != boost::none) {
         std::cout << result.value() << std::endl;
     }

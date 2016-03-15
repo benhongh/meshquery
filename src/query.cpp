@@ -36,7 +36,7 @@ namespace hongbin {
         auto projection = (referencePoint - v1).dot(edgeUnit);  // projection of RP along v1->v2
         auto edgeLength = (v2 - v1).norm();
         if (projection >= 0 && projection <= edgeLength) {
-            Vector3d projectionPoint = v1 - projection * edgeUnit;
+            Vector3d projectionPoint = v1 + projection * edgeUnit;
             return projectionPoint;
         }
         else {
@@ -92,6 +92,7 @@ namespace hongbin {
         }
         
         auto closestVertex = m_mesh.getVertex(closestVertexIndex.value());
+        std::cout << "closest vertex " << closestVertex[0] << ", " << closestVertex[1] << ", " << closestVertex[2] << std::endl;
         
         boost::optional<Vector3d> closestPoint = boost::none;
         double minSquaredDistance = maxDistance * maxDistance;
