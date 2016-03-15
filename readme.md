@@ -113,6 +113,20 @@ Note that I haven't had time to check if my clang compiler
 actually generates SIMD instructions. Given the very simple
 build step I suspect it doesn't.
 
+Additionally, some Boost libraries are used.
+
+#Building the demo
+Since there is nothing to link with other than the standard C++ 
+runtime, building the demo comes down to just building all the 
+source files in the src/ directory. A bash script (build.sh) is
+provided to make it easier. I didn't use any build system such 
+as MAKE because I think it is an overkill.
+
+Before building the demo make sure you have a relatively recent
+version of clang, Eigen3 and Boost 1.6 installed. Since I am
+working on a Mac I haven't had the chance to make sure the code
+is compatible with GCC or MSVC. My apologies.
+
 #Threading
 This is a single-threaded demo given the highly limited time
 constraint. But for discussion's sake let's just say that some
